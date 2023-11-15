@@ -1,3 +1,9 @@
+.cache
+.vs
+.out
+build
+out
+
 # Prerequisites
 *.d
 
