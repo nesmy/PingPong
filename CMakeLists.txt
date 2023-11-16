@@ -29,8 +29,8 @@ add_subdirectory(vendor/glm)
 #  COMMENT "Copying to output directory")
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD 
   COMMAND "${CMAKE_COMMAND}" -E copy_directory
-	"${CMAKE_CURRENT_SOURCE_DIR}/Assets"
-     "${CMAKE_CURRENT_SOURCE_DIR}/out/build/x64-Debug" 
+	"${CMAKE_CURRENT_SOURCE_DIR}/Assets/"
+     "${CMAKE_CURRENT_SOURCE_DIR}/out/build/x64-Debug/Assets" 
   COMMENT "Copying to output directory")
 
 
