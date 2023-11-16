@@ -3,6 +3,7 @@
 .out
 build
 out
+bin
 
 # Prerequisites
 *.d
