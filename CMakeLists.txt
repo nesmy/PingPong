@@ -6,11 +6,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(PingPong)
 
-#set (HEADER_FILES
-#   include/pch.h)
+set (HEADER_FILES
+   include/enpch.h)
 file(GLOB SOURCES src/Game/*.cpp vendor/stb_image/stb_image.cpp src/Engine/*.cpp vendor/imgui/*.cpp
 				
-		#${HEADER_FILES} 
+		${HEADER_FILES} 
 		)
 
 add_executable(${PROJECT_NAME} ${SOURCES})

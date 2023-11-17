@@ -1,10 +1,16 @@
-#include <iostream>
-#include "Log.h"
+#include "Game.h"
 
-int main(int argc, char* argv[])
+Game::Game()
 {
-	Engine::Log::Init();
-	EN_CORE_INFO("Hello World!");
-	while (true);
-	return 0;
+
+}
+
+Game::~Game()
+{
+
+}
+
+Engine::Application* Engine::CreateApplication()
+{
+	return new Game();
 }
