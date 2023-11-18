@@ -38,8 +38,9 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 
 
 target_include_directories(${PROJECT_NAME}
-  PUBLIC include
+	PUBLIC include
 	PUBLIC include/Engine
+	PUBLIC include/Engine/Core
 	PUBLIC include/Game
 	PUBLIC vendor/stb_image
 	PUBLIC vendor/glad/include

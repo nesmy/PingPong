@@ -1,0 +1,18 @@
+#pragma once
+
+#include <stdio.h> 
+
+// for use by application
+#include "Application.h"
+#include "Log.h"
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
+#include "ResourceManager.h"
+#include "SpriteRenderer.h"
+#include "glm/glm.hpp"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glad/glad.h>
+
+//---------- ENTRY POINT -------------
+#include "Entry.h"
+//------------------------------------

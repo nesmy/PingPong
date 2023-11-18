@@ -1,2 +1,2 @@
-cd build
-PinPong.exe
+cd bin
+PingPong.exe

@@ -3,11 +3,15 @@
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 #include "Events/ApplicationEvent.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
 
 namespace Engine {
 
 	static bool s_GLFWInitialized = false;
+	static bool s_GladInitialized = false;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
@@ -136,15 +140,36 @@ namespace Engine {
 				MouseScrolledEvent event((float)xPos, (float)yPos);
 				data.EventCallback(event);
 			});
+
+		if (!s_GladInitialized)
+		{
+			if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			{
+				std::cout << "Failed to initialize GLAD" << std::endl;
+			}
+			s_GLFWInitialized = true;
+		}
+		IMGUI_CHECKVERSION();
+		ImGui::CreateContext();
+		ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
+		ImGui_ImplOpenGL3_Init("#version 410");
+		ImGui::StyleColorsDark();
 	}
 
 	void OpenGLWindow::Shutdown()
 	{
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
 		glfwDestroyWindow(m_Window);
 	}
 
 	void OpenGLWindow::OnUpdate()
 	{
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+		
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}
