@@ -20,7 +20,7 @@ namespace Engine {
 
 		void Run();
 		virtual void Setup() = 0;
-		void OnEvent(Event& e);
+		virtual void OnEvent(Event& e);
 		virtual void OnRender() {};
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
