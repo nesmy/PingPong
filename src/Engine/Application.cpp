@@ -25,7 +25,7 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		/*
+		
 		ResourceManager::LoadShader("Assets/shaders/Basic.shader", nullptr, "sprite");
 
 		glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280),
@@ -37,7 +37,7 @@ namespace Engine {
 		Renderer = new SpriteRenderer(shader);
 		// load textures
 		ResourceManager::LoadTexture("Assets/png/Ball.jpg", false, "ball");
-		*/
+		
 		while (m_Running)
 		{
 			
@@ -45,10 +45,10 @@ namespace Engine {
 			OnRender();
 			
 			
-			/*
+			
 			Texture2D ball = ResourceManager::GetTexture("sprite");
 			Renderer->DrawSprite(ball, glm::vec2(0.0f, 0.0f), glm::vec2(1280, 720), 0.0f);
-			*/
+			
 		}
 	}
 

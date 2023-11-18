@@ -1,6 +1,6 @@
 #include "enpch.h"
 
-#include "texture.h"
+#include "Texture.h"
 
 namespace Engine {
     Texture2D::Texture2D()
