@@ -25,29 +25,13 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		
-		ResourceManager::LoadShader("Assets/shaders/Basic.shader", nullptr, "sprite");
-
-		glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280),
-			static_cast<float>(720), 0.0f, -1.0f, 1.0f);
-		ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
-		ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-		// set render-specific controls
-		Shader shader = ResourceManager::GetShader("sprite");
-		Renderer = new SpriteRenderer(shader);
-		// load textures
-		ResourceManager::LoadTexture("Assets/png/Ball.jpg", false, "ball");
+		Setup();
 		
 		while (m_Running)
 		{
 			
 			m_Window->OnUpdate();
 			OnRender();
-			
-			
-			
-			Texture2D ball = ResourceManager::GetTexture("sprite");
-			Renderer->DrawSprite(ball, glm::vec2(0.0f, 0.0f), glm::vec2(1280, 720), 0.0f);
 			
 		}
 	}
