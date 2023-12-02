@@ -1,5 +1,8 @@
 #include "Game.h"
 
+#include "ResourceManager.h"
+#include "Texture.h"
+#include "fwd.hpp"
 #include "glm/glm.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include "glad/glad.h"
@@ -19,7 +22,7 @@ Game::~Game()
 
 void Game::Setup()
 {
-    /*
+    
 	Engine::ResourceManager::LoadShader("Assets/shaders/Basic.shader", nullptr, "sprite");
 
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280),
@@ -30,26 +33,40 @@ void Game::Setup()
     Engine::Shader shader = Engine::ResourceManager::GetShader("sprite");
     Renderer = new Engine::SpriteRenderer(shader);
     // load textures
-    Engine::ResourceManager::LoadTexture("Assets/png/Ball.jpg", false, "ball");
-    */
+    Engine::ResourceManager::LoadTexture("Assets/png/Ball.jpg", true, "ball");
+
+	Engine::ResourceManager::LoadTexture("Assets/png/Player.png",true, "player");
+   
+	Engine::ResourceManager::LoadTexture("Assets/png/Computer.png", true, "computer");
+	Engine::ResourceManager::LoadTexture("Assets/png/Board.png", true, "back");
 
 }
+/*
+void Game::OnEvent(Engine::Event& e)
+{
+	EN_TRACE("{0}", e);
+}
+*/
 
 void Game::OnRender()
 {
-    
+	Engine::Application& app = Engine::Application::Get(); 
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     ImGui::Begin("Test");
     ImGui::End();
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-    /*
-    EN_INFO("test");
     
-    Engine::Texture2D ball = Engine::ResourceManager::GetTexture("sprite");
-    Renderer->DrawSprite(ball, glm::vec2(0.0f, 0.0f), glm::vec2(1280, 720), 0.0f);
-    */
+    Engine::Texture2D ball = Engine::ResourceManager::GetTexture("ball");
+	Engine::Texture2D player = Engine::ResourceManager::GetTexture("player");
+	Engine::Texture2D computer = Engine::ResourceManager::GetTexture("computer");
+	Engine::Texture2D back = Engine::ResourceManager::GetTexture("back");
+	Renderer->DrawSprite(back, glm::vec2(0.0f, 0.0f), glm::vec2(      1280.0f, 720.0f), 0.0f);
+    Renderer->DrawSprite(ball, glm::vec2((app.GetWindow().GetWidth()/2), (app.GetWindow().GetHeight()/2)), glm::vec2(30.0f, 30.0f), 0.0f);
+	Renderer->DrawSprite(player, glm::vec2(0.0f, app.GetWindow().GetHeight()/2 - 120.0f), glm::vec2(17.0f, 120.0f), 0.0f);
+	Renderer->DrawSprite(computer, glm::vec2(app.GetWindow().GetWidth() - 17.0f, (app.GetWindow().GetHeight()/2) - 120.0f), glm::vec2(17.0f, 120.0f), 0.0f);
+    
 }
 
 

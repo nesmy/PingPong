@@ -10,9 +10,12 @@
 namespace Engine {
 
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+	
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 		//m_Window->
@@ -25,7 +28,7 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		
+		/*		
 		ResourceManager::LoadShader("Assets/shaders/Basic.shader", nullptr, "sprite");
 
 		glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280),
@@ -37,6 +40,8 @@ namespace Engine {
 		Renderer = new SpriteRenderer(shader);
 		// load textures
 		ResourceManager::LoadTexture("Assets/png/Ball.jpg", false, "ball");
+		*/
+		//Setup();
 		
 		while (m_Running)
 		{
@@ -45,10 +50,10 @@ namespace Engine {
 			OnRender();
 			
 			
-			
+		/*	
 			Texture2D ball = ResourceManager::GetTexture("sprite");
-			Renderer->DrawSprite(ball, glm::vec2(0.0f, 0.0f), glm::vec2(1280, 720), 0.0f);
-			
+			Renderer->DrawSprite(ball, glm::vec2((1280.0f/2), (720.0f/2)), glm::vec2(30.0f, 30.0f), 0.0f);
+			*/
 		}
 	}
 
