@@ -54,16 +54,6 @@ void Game::OnRender()
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     //EN_INFO("test");
-    
-    Engine::Texture2D ball = Engine::ResourceManager::GetTexture("ball");
-    Engine::Texture2D player = Engine::ResourceManager::GetTexture("player");
-    Engine::Texture2D ai = Engine::ResourceManager::GetTexture("ai");
-    // draw background
-    Engine::Texture2D back = Engine::ResourceManager::GetTexture("background");
-    Renderer->DrawSprite(back, glm::vec2(0.0f, 0.0f), glm::vec2(1280, 720), 0.0f);
-    Renderer->DrawSprite(ball, glm::vec2(1280 / 2 - 15, 720 / 2 - 30), glm::vec2(30, 30), 0.0f);
-    Renderer->DrawSprite(player, position, glm::vec2(17, 120), 0.0f);
-    Renderer->DrawSprite(ai, glm::vec2(1280.0f - 17.0f, 0.0f), glm::vec2(17, 120), 0.0f);
 
     ImGui::Begin("Test");
     ImGui::SliderFloat2("Position", &position.y, 0.0f, 720.0f - 120.0f);

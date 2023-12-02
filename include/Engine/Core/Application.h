@@ -19,7 +19,7 @@ namespace Engine {
 		virtual ~Application();
 
 		void Run();
-		virtual void Setup() = {};
+		virtual void Setup() {};
 		void OnEvent(Event& e);
 		virtual void OnRender() {};
 		
