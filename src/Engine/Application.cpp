@@ -70,6 +70,7 @@ namespace Engine {
 		//	if (e.Handled)
 		//		break;
 		//}
+		OnInput(e);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
