@@ -9,8 +9,9 @@ public:
 	Game();
 	~Game();
 
+	void vec2_norm(float& x, float&y);
 	void Setup();
-	void OnInput(Engine::Event& e);
+	void OnInput();
 	void OnRender();
 
 	Engine::Application& app = Engine::Application::Get();
@@ -27,4 +28,11 @@ public:
 	glm::vec2 boardsize = glm::vec2(17.0f, 120.0f);
 	glm::vec2 ballsize = glm::vec2(30.0f, 30.0f);
 	glm::vec2 bgsize = glm::vec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
+private:
+	int Score_left = 0;
+	int Score_right = 0;
+	float Ball_dir_x = -1.0f;
+	float Ball_dir_y = 1.0f;
+	int Ball_speed = 1;
+	int Speed = 5;
 };

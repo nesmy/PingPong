@@ -28,32 +28,13 @@ namespace Engine {
 
 	void Application::Run()
 	{
-		/*		
-		ResourceManager::LoadShader("Assets/shaders/Basic.shader", nullptr, "sprite");
-
-		glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(1280),
-			static_cast<float>(720), 0.0f, -1.0f, 1.0f);
-		ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
-		ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-		// set render-specific controls
-		Shader shader = ResourceManager::GetShader("sprite");
-		Renderer = new SpriteRenderer(shader);
-		// load textures
-		ResourceManager::LoadTexture("Assets/png/Ball.jpg", false, "ball");
-		*/
-		//Setup();
 		
 		while (m_Running)
 		{
 			
 			m_Window->OnUpdate();
 			OnRender();
-			
-			
-		/*	
-			Texture2D ball = ResourceManager::GetTexture("sprite");
-			Renderer->DrawSprite(ball, glm::vec2((1280.0f/2), (720.0f/2)), glm::vec2(30.0f, 30.0f), 0.0f);
-			*/
+			OnInput();
 		}
 	}
 
@@ -63,14 +44,7 @@ namespace Engine {
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 
 		EN_CORE_TRACE("{0}", e);
-
-		//for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
-		//{
-		//	(*--it)->OnEvent(e);
-		//	if (e.Handled)
-		//		break;
-		//}
-		OnInput(e);
+		
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)

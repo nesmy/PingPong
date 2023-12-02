@@ -22,7 +22,7 @@ namespace Engine {
 		virtual void Setup() {};
 		void OnEvent(Event& e);
 		virtual void OnRender() {};
-		virtual void OnInput(Event& e) {};
+		virtual void OnInput() {};
 		
 		inline static Application& Get() { return *s_Instance;}
 		inline Window& GetWindow() { return *m_Window;}

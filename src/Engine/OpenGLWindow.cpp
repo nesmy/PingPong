@@ -142,15 +142,10 @@ namespace Engine {
 			});
 
 		if (!s_GladInitialized)
-		{
-			if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-			{
-				std::cout << "Failed to initialize GLAD" << std::endl;
-			}
-			s_GLFWInitialized = true;
-		}
+		
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
 		ImGui::StyleColorsDark();
