@@ -7,7 +7,9 @@
                 "${workspaceFolder}/include/Engine/Core",
                 "${workspaceFolder}/vendor/spdlog/include",
                 "${workspaceFolder}/include/Engine",
-                "${workspaceFolder}/vendor/imgui"
+                "${workspaceFolder}/vendor/imgui",
+                "${workspaceFolder}/include/Game",
+                "${workspaceFolder}/vendor/glm/glm"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
