@@ -35,6 +35,7 @@ void Game::Setup()
 {
     
 	Engine::ResourceManager::LoadShader("Assets/shaders/Basic.shader", nullptr, "sprite");
+    //EN_CORE_TRACE("{0}, {1}", app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(app.GetWindow().GetWidth()),
         static_cast<float>(app.GetWindow().GetHeight()), 0.0f, -1.0f, 1.0f);
@@ -121,7 +122,13 @@ void Game::OnInput()
         positionP.y -= Speed;
     
     if(Engine::Input::IsKeyPressed(83))
+	{
         positionP.y += Speed;
+		if(positionP.y < 0 )
+		{
+			positionP.y == 0;
+		}
+	}
 
     if(Engine::Input::IsKeyPressed(265))
         positionC.y -= Speed;

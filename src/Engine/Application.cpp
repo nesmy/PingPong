@@ -43,7 +43,7 @@ namespace Engine {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 
-		EN_CORE_TRACE("{0}", e);
+		//EN_CORE_TRACE("{0}", e);
 		
 	}
 
