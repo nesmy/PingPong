@@ -1,5 +1,5 @@
 #include "enpch.h"
-#include "OpenGLInput.h"
+#include "Platform/OpenGl/OpenGLInput.h"
 
 #include <GLFW/glfw3.h>
 #include "Application.h"

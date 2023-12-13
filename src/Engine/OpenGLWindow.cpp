@@ -1,11 +1,14 @@
 #include "enpch.h"
-#include "OpenGLWindow.h"
+#include "Platform/OpenGl/OpenGLWindow.h"
+
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 #include "Events/ApplicationEvent.h"
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 
 namespace Engine {
@@ -49,7 +52,9 @@ namespace Engine {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -166,7 +171,7 @@ namespace Engine {
 		ImGui::NewFrame();
 		
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void OpenGLWindow::SetVSync(bool enabled)

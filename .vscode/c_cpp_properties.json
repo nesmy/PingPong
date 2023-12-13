@@ -10,7 +10,9 @@
                 "${workspaceFolder}/vendor/imgui",
                 "${workspaceFolder}/vendor/glm",
                 "${workspaceFolder}/include/Game",
-                "${workspaceFolder}/vendor/glm/glm"
+                "${workspaceFolder}/vendor/glm/glm",
+                "${workspaceFolder}/vendor/glfw/include",
+                "${workspaceFolder}/include/Engine/Platform/OpenGl"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
