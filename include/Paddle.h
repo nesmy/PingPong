@@ -1,7 +1,11 @@
 #include "raylib.h"
 class Paddle {
 public:
-  Paddle(Texture2D texture) : _Texture(texture) {}
+  Paddle(Texture2D texture) : _Texture(texture) {
+    _Position.x = GetScreenWidth() - _Texture.width - 20;
+    _Position.y = (float)GetScreenHeight() / 2 - (float)_Texture.height / 2;
+    _Speed = 6;
+  }
   ~Paddle() { UnloadTexture(_Texture); }
 
   void Draw() { DrawTextureV(_Texture, _Position, WHITE); }

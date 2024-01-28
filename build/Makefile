@@ -246,6 +246,30 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f vendor/raylib/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build.make vendor/raylib/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
+src/GTime.o: src/GTime.cpp.o
+.PHONY : src/GTime.o
+
+# target to build an object file
+src/GTime.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/GTime.cpp.o
+.PHONY : src/GTime.cpp.o
+
+src/GTime.i: src/GTime.cpp.i
+.PHONY : src/GTime.i
+
+# target to preprocess a source file
+src/GTime.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/GTime.cpp.i
+.PHONY : src/GTime.cpp.i
+
+src/GTime.s: src/GTime.cpp.s
+.PHONY : src/GTime.s
+
+# target to generate assembly for a file
+src/GTime.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/GTime.cpp.s
+.PHONY : src/GTime.cpp.s
+
 src/Game.o: src/Game.cpp.o
 .PHONY : src/Game.o
 
@@ -270,6 +294,30 @@ src/Game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/Game.cpp.s
 .PHONY : src/Game.cpp.s
 
+src/GameState.o: src/GameState.cpp.o
+.PHONY : src/GameState.o
+
+# target to build an object file
+src/GameState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/GameState.cpp.o
+.PHONY : src/GameState.cpp.o
+
+src/GameState.i: src/GameState.cpp.i
+.PHONY : src/GameState.i
+
+# target to preprocess a source file
+src/GameState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/GameState.cpp.i
+.PHONY : src/GameState.cpp.i
+
+src/GameState.s: src/GameState.cpp.s
+.PHONY : src/GameState.s
+
+# target to generate assembly for a file
+src/GameState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PingPong.dir/build.make CMakeFiles/PingPong.dir/src/GameState.cpp.s
+.PHONY : src/GameState.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -289,9 +337,15 @@ help:
 	@echo "... PingPong"
 	@echo "... glfw"
 	@echo "... raylib"
+	@echo "... src/GTime.o"
+	@echo "... src/GTime.i"
+	@echo "... src/GTime.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
+	@echo "... src/GameState.o"
+	@echo "... src/GameState.i"
+	@echo "... src/GameState.s"
 .PHONY : help
 
 

@@ -69,10 +69,24 @@ include CMakeFiles/PingPong.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/PingPong.dir/flags.make
 
+CMakeFiles/PingPong.dir/src/GTime.cpp.o: CMakeFiles/PingPong.dir/flags.make
+CMakeFiles/PingPong.dir/src/GTime.cpp.o: /home/Nesmy/Playground/PingPong/src/GTime.cpp
+CMakeFiles/PingPong.dir/src/GTime.cpp.o: CMakeFiles/PingPong.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Nesmy/Playground/PingPong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PingPong.dir/src/GTime.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PingPong.dir/src/GTime.cpp.o -MF CMakeFiles/PingPong.dir/src/GTime.cpp.o.d -o CMakeFiles/PingPong.dir/src/GTime.cpp.o -c /home/Nesmy/Playground/PingPong/src/GTime.cpp
+
+CMakeFiles/PingPong.dir/src/GTime.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PingPong.dir/src/GTime.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/Nesmy/Playground/PingPong/src/GTime.cpp > CMakeFiles/PingPong.dir/src/GTime.cpp.i
+
+CMakeFiles/PingPong.dir/src/GTime.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PingPong.dir/src/GTime.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Nesmy/Playground/PingPong/src/GTime.cpp -o CMakeFiles/PingPong.dir/src/GTime.cpp.s
+
 CMakeFiles/PingPong.dir/src/Game.cpp.o: CMakeFiles/PingPong.dir/flags.make
 CMakeFiles/PingPong.dir/src/Game.cpp.o: /home/Nesmy/Playground/PingPong/src/Game.cpp
 CMakeFiles/PingPong.dir/src/Game.cpp.o: CMakeFiles/PingPong.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Nesmy/Playground/PingPong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PingPong.dir/src/Game.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Nesmy/Playground/PingPong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PingPong.dir/src/Game.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PingPong.dir/src/Game.cpp.o -MF CMakeFiles/PingPong.dir/src/Game.cpp.o.d -o CMakeFiles/PingPong.dir/src/Game.cpp.o -c /home/Nesmy/Playground/PingPong/src/Game.cpp
 
 CMakeFiles/PingPong.dir/src/Game.cpp.i: cmake_force
@@ -83,14 +97,32 @@ CMakeFiles/PingPong.dir/src/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PingPong.dir/src/Game.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Nesmy/Playground/PingPong/src/Game.cpp -o CMakeFiles/PingPong.dir/src/Game.cpp.s
 
+CMakeFiles/PingPong.dir/src/GameState.cpp.o: CMakeFiles/PingPong.dir/flags.make
+CMakeFiles/PingPong.dir/src/GameState.cpp.o: /home/Nesmy/Playground/PingPong/src/GameState.cpp
+CMakeFiles/PingPong.dir/src/GameState.cpp.o: CMakeFiles/PingPong.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Nesmy/Playground/PingPong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PingPong.dir/src/GameState.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PingPong.dir/src/GameState.cpp.o -MF CMakeFiles/PingPong.dir/src/GameState.cpp.o.d -o CMakeFiles/PingPong.dir/src/GameState.cpp.o -c /home/Nesmy/Playground/PingPong/src/GameState.cpp
+
+CMakeFiles/PingPong.dir/src/GameState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/PingPong.dir/src/GameState.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/Nesmy/Playground/PingPong/src/GameState.cpp > CMakeFiles/PingPong.dir/src/GameState.cpp.i
+
+CMakeFiles/PingPong.dir/src/GameState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/PingPong.dir/src/GameState.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Nesmy/Playground/PingPong/src/GameState.cpp -o CMakeFiles/PingPong.dir/src/GameState.cpp.s
+
 # Object files for target PingPong
 PingPong_OBJECTS = \
-"CMakeFiles/PingPong.dir/src/Game.cpp.o"
+"CMakeFiles/PingPong.dir/src/GTime.cpp.o" \
+"CMakeFiles/PingPong.dir/src/Game.cpp.o" \
+"CMakeFiles/PingPong.dir/src/GameState.cpp.o"
 
 # External object files for target PingPong
 PingPong_EXTERNAL_OBJECTS =
 
+PingPong: CMakeFiles/PingPong.dir/src/GTime.cpp.o
 PingPong: CMakeFiles/PingPong.dir/src/Game.cpp.o
+PingPong: CMakeFiles/PingPong.dir/src/GameState.cpp.o
 PingPong: CMakeFiles/PingPong.dir/build.make
 PingPong: vendor/raylib/raylib/libraylib.a
 PingPong: /usr/lib/libOpenGL.so
@@ -100,7 +132,7 @@ PingPong: vendor/raylib/raylib/external/glfw/src/libglfw3.a
 PingPong: /usr/lib/librt.a
 PingPong: /usr/lib/libm.so
 PingPong: CMakeFiles/PingPong.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Nesmy/Playground/PingPong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable PingPong"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Nesmy/Playground/PingPong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable PingPong"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PingPong.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying to output directory"
 	/usr/bin/cmake -E copy_directory /home/Nesmy/Playground/PingPong/assets /home/Nesmy/Playground/PingPong/build/assets

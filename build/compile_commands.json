@@ -1,9 +1,21 @@
 [
 {
   "directory": "/home/Nesmy/Playground/PingPong/build",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/Nesmy/Playground/PingPong/include -I/home/Nesmy/Playground/PingPong/vendor/raylib/src -I/home/Nesmy/Playground/PingPong/vendor/raylib/src/external/glfw/include -std=gnu++14 -o CMakeFiles/PingPong.dir/src/GTime.cpp.o -c /home/Nesmy/Playground/PingPong/src/GTime.cpp",
+  "file": "/home/Nesmy/Playground/PingPong/src/GTime.cpp",
+  "output": "CMakeFiles/PingPong.dir/src/GTime.cpp.o"
+},
+{
+  "directory": "/home/Nesmy/Playground/PingPong/build",
   "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/Nesmy/Playground/PingPong/include -I/home/Nesmy/Playground/PingPong/vendor/raylib/src -I/home/Nesmy/Playground/PingPong/vendor/raylib/src/external/glfw/include -std=gnu++14 -o CMakeFiles/PingPong.dir/src/Game.cpp.o -c /home/Nesmy/Playground/PingPong/src/Game.cpp",
   "file": "/home/Nesmy/Playground/PingPong/src/Game.cpp",
   "output": "CMakeFiles/PingPong.dir/src/Game.cpp.o"
+},
+{
+  "directory": "/home/Nesmy/Playground/PingPong/build",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/Nesmy/Playground/PingPong/include -I/home/Nesmy/Playground/PingPong/vendor/raylib/src -I/home/Nesmy/Playground/PingPong/vendor/raylib/src/external/glfw/include -std=gnu++14 -o CMakeFiles/PingPong.dir/src/GameState.cpp.o -c /home/Nesmy/Playground/PingPong/src/GameState.cpp",
+  "file": "/home/Nesmy/Playground/PingPong/src/GameState.cpp",
+  "output": "CMakeFiles/PingPong.dir/src/GameState.cpp.o"
 },
 {
   "directory": "/home/Nesmy/Playground/PingPong/build/vendor/raylib/raylib",

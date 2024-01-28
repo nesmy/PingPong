@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/PingPong.dir/src/Game.cpp.o -o PingPong  vendor/raylib/raylib/libraylib.a -lm -lpthread /usr/lib/libOpenGL.so /usr/lib/libGLX.so /usr/lib/libGLU.so vendor/raylib/raylib/external/glfw/src/libglfw3.a /usr/lib/librt.a -lm -ldl 
+/usr/bin/c++ CMakeFiles/PingPong.dir/src/GTime.cpp.o CMakeFiles/PingPong.dir/src/Game.cpp.o CMakeFiles/PingPong.dir/src/GameState.cpp.o -o PingPong  vendor/raylib/raylib/libraylib.a -lm -lpthread /usr/lib/libOpenGL.so /usr/lib/libGLX.so /usr/lib/libGLU.so vendor/raylib/raylib/external/glfw/src/libglfw3.a /usr/lib/librt.a -lm -ldl 

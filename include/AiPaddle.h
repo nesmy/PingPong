@@ -3,7 +3,11 @@
 
 class AiPaddle : public Paddle {
 public:
-  AiPaddle(Texture2D texture) : Paddle(texture) {}
+  AiPaddle(Texture2D texture) : Paddle(texture) {
+    _Position.x = 20;
+    _Position.y = (float)GetScreenHeight() / 2 - (float)_Texture.height / 2;
+    _Speed = 5;
+  }
   ~AiPaddle() { UnloadTexture(_Texture); }
 
   void Update(int ball_y) {
