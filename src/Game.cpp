@@ -45,20 +45,17 @@ int main(int argc, char *argv[]) {
   Timer timer = {10};
 
   while (!Game._EndProg) {
-    if (IsKeyPressed(KEY_ESCAPE)) {
-      Game.ToggleMenu();
-      Game._GameStart = false;
-    }
+
     if (WindowShouldClose())
       Game._EndProg = true;
 
     Game.Update();
     BeginDrawing();
-    if (Game._GameStart) {
+    if (!Game._GameStart && !Game._SetOpen && !Game._GameOver) {
       Game.StartMenu(&timer);
     } else if (!Game._GameMenu && Game._GameOver == false) {
       // GameStart
-      Game._GameStart = false;
+      Game._GameStart = true;
 
       // Update
       ball.Update(Cscore, Pscore);
@@ -72,14 +69,16 @@ int main(int argc, char *argv[]) {
               (Rectangle){Player.GetPosition().x, Player.GetPosition().y,
                           (float)Player.GetTexture().width,
                           (float)Player.GetTexture().height})) {
-        ball._Speed_x *= -1;
+        if (ball._Speed_x > 0)
+          ball._Speed_x *= -1;
       } else if (CheckCollisionCircleRec(
                      ball.GetPosition(), ball._Radius,
                      (Rectangle){Computer.GetPosition().x - 30,
                                  Computer.GetPosition().y,
                                  (float)Computer.GetTexture().width,
                                  (float)Computer.GetTexture().height}))
-        ball._Speed_x *= -1;
+        if (ball._Speed_x < 0)
+          ball._Speed_x *= -1;
 
       // Drawing
       DrawTexture(BackGround, 0, 0, WHITE);
@@ -90,20 +89,33 @@ int main(int argc, char *argv[]) {
       DrawText(std::to_string(Pscore).c_str(), GetScreenWidth() / 1.5 + 20, 5,
                40, BLACK);
       DrawText("TIME", GetScreenWidth() / 2 - 25, 0, 17, LIGHTGRAY);
-      DrawText(TextFormat(": %02.02f", timer.Lifetime), GetScreenWidth() / 2,
+      DrawText(TextFormat("%01i:%01i", (int)timer.Lifetime / 60,
+                          (int)timer.Lifetime % 60),
+               GetScreenWidth() / 2 -
+                   MeasureText(TextFormat("%01i:%01i", (int)timer.Lifetime / 60,
+                                          (int)timer.Lifetime % 60),
+                               20) /
+                       2,
+
                20, 20, LIGHTGRAY);
       ball.Draw();
       Player.Draw();
       Computer.Draw();
-      if (Pscore == 1 || Cscore == 7) {
+      if (Pscore == 7 || Cscore == 7) {
         Game._GameOver = true;
       } else if (TimerDone(&timer)) {
         Game._GameOver = true;
       }
     } else if (Game._GameOver) {
       Game.GameOver(&Pscore, &Cscore, &timer);
+    } else if (Game._SetOpen) {
+      Game.SettingsMenu(Player._Speed, Computer._Speed, ball._Speed_x);
     } else {
       Game.MainMenu();
+    }
+
+    if (IsKeyPressed(KEY_ESCAPE) && !Game._GameMenu) {
+      Game.ToggleMenu();
     }
     DrawFPS(20, 20);
     EndDrawing();

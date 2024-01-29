@@ -17,14 +17,16 @@ public:
   void StartMenu(Timer *timer);
   void MainMenu();
   void GameOver(int *Pscore, int *Cscore, Timer *timer);
+  void SettingsMenu(int Pspeed, int Cspeed, int Bspeed);
   void ToggleMenu();
   void Update();
   bool IsOverButton(Rectangle rec);
 
-  bool _GameStart = true;
+  bool _GameStart = false;
   bool _GameOver = false;
   bool _GameMenu = true;
   int _Selected;
+  bool _SetOpen = false;
   bool _EndProg = false;
 
 private:
@@ -33,7 +35,9 @@ private:
   Button _Start;
   Button _Settings;
   Button _Restart;
-  Vector2 _mousPoint;
+  Button _ReturnB;
+  Button _LeftHook;
+  Button _RightHook;
   std::list<Button *> listBox;
 #define BOXWIDTH 200
 #define BOXHEIGHT 70
@@ -41,9 +45,13 @@ private:
 #define BOXFSIZE 35
 
 private:
+  void ToggleSettings();
   void Continue();
   void Start(Timer *timer);
   void Restart(int *Pscore, int *Cscore, Timer *timer);
   void Settings();
   void Quit();
+  void ReturnB();
+  void LeftHook();
+  void RightHook();
 };

@@ -29,6 +29,8 @@ void GameState::StartMenu(Timer *timer) {
            (float)GetScreenWidth() / 2 -
                (float)MeasureText("Ping Pong", BOXFSIZE) / 2,
            _Start._Src.y - (_Settings._Src.height + BOXOFF), BOXFSIZE, RED);
+  _Quit._Src.x = (float)GetScreenWidth() / 2 - _Quit._Src.width / 2;
+  _Quit._Src.y = _Settings._Src.y + (_Settings._Src.height + BOXOFF);
   Start(timer);
   Quit();
   Settings();
@@ -38,6 +40,10 @@ void GameState::MainMenu() {
            (float)GetScreenWidth() / 2 -
                (float)MeasureText("PAUSE", BOXFSIZE) / 2,
            _Start._Src.y - (_Settings._Src.height + BOXOFF), BOXFSIZE, RED);
+  _Quit._Src.x = (float)GetScreenWidth() / 2 - _Quit._Src.width / 2;
+  _Quit._Src.y = _Settings._Src.y + (_Settings._Src.height + BOXOFF);
+  _Continue._Src.x = _Start._Src.x;
+  _Continue._Src.y = _Start._Src.y;
   Continue();
   Quit();
   Settings();
@@ -48,8 +54,26 @@ void GameState::GameOver(int *Pscore, int *Cscore, Timer *timer) {
                (float)MeasureText("GAME OVER", BOXFSIZE) / 2,
            _Start._Src.y, BOXFSIZE, RED);
   Restart(Pscore, Cscore, timer);
+  _Quit._Src.x = (float)GetScreenWidth() / 2 - _Quit._Src.width / 2;
+  _Quit._Src.y = _Settings._Src.y + (_Settings._Src.height + BOXOFF);
   Quit();
 }
+void GameState::SettingsMenu(int Pspeed, int Cspeed, int Bspeed) {
+  ClearBackground(BLACK);
+  DrawText(TextFormat("PLAYER SPEED: %02i", Pspeed), 20, GetScreenHeight() / 4,
+           40, RED);
+  DrawText(TextFormat("AI SPEED: %02i", Cspeed), 20, GetScreenHeight() / 3 + 20,
+           40, RED);
+  DrawText(TextFormat("BALL SPEED: %02i", Bspeed), 20, GetScreenHeight() / 2,
+           40, RED);
+  _Continue._Src.x = 20;
+  _Continue._Src.y = (float)GetScreenHeight() - _Quit._Src.height - 120;
+  Continue();
+  _Quit._Src.x = 20;
+  _Quit._Src.y = (float)GetScreenHeight() - _Quit._Src.height - 40;
+  Quit();
+}
+
 void GameState::ToggleMenu() {
   if (_GameMenu == true)
     _GameMenu = false;
@@ -82,8 +106,14 @@ void GameState::Continue() {
                (float)MeasureText("CONTINUS", BOXFSIZE) / 2,
            _Continue._Src.y + _Continue._Src.height / 2 - (float)BOXFSIZE / 2,
            BOXFSIZE, RED);
-  if (IsOverButton(_Continue._Src) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-    ToggleMenu();
+  if (IsOverButton(_Continue._Src) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    if (!_GameStart)
+      ToggleSettings();
+    else {
+      ToggleMenu();
+      ToggleSettings();
+    }
+  }
 }
 void GameState::Restart(int *Pscore, int *Cscore, Timer *timer) {
   DrawRectangleRec(_Restart._Src, WHITE);
@@ -107,18 +137,30 @@ void GameState::Start(Timer *timer) {
            _Start._Src.y + _Start._Src.height / 2 - (float)BOXFSIZE / 2,
            BOXFSIZE, RED);
   if (IsOverButton(_Start._Src) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-    _GameStart = false;
+    _GameStart = true;
     ToggleMenu();
     StartTimer(timer, 300.0f);
   }
 }
 void GameState::Settings() {
+  if (IsOverButton(_Settings._Src) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    ToggleSettings();
+  }
   DrawRectangleRec(_Settings._Src, WHITE);
   DrawText("Settings",
            _Settings._Src.x + _Settings._Src.width / 2 -
                (float)MeasureText("Settings", BOXFSIZE) / 2,
            _Settings._Src.y + _Settings._Src.height / 2 - (float)BOXFSIZE / 2,
            BOXFSIZE, RED);
-  if (IsOverButton(_Settings._Src) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-    std::cout << "TODO\n";
+  // if (IsOverButton(_Settings._Src) &&
+  // IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) std::cout << "TODO\n";
+}
+void GameState::ReturnB() {}
+
+void GameState::ToggleSettings() {
+  if (_SetOpen)
+    _SetOpen = false;
+  else {
+    _SetOpen = true;
+  }
 }
