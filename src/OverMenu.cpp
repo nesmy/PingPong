@@ -1,29 +1,22 @@
-#include "Menu.h"
+#include "OverMenu.h"
 #include "ResourceManager.h"
 
-#define RAYGUI_IMPLEMENTATION
-#include "raygui.h"
-
-std::shared_ptr<BB::Scene> MenuScene::update(){
-    if(startClicked){
-      startClicked =false;
-      return BB::ResourceManager::GetScene("Game");
-    }else if(settingClicked){
-      settingClicked = false;
-      return BB::ResourceManager::GetScene("MainSetting");
-    }
-    else {
+std::shared_ptr<BB::Scene> OverMenuScene::update(){
+    if(restartClicked){
+      restartClicked =false;
+      return BB::ResourceManager::GetScene("Main");
+    }else {
       return nullptr;
     }
   }
 
-void MenuScene::Draw(){
+void OverMenuScene::Draw(){
     BB::Scene::Draw();
 
     int sceneWidth = GetScreenWidth();
     int sceneHeight = GetScreenHeight();
 
-    const char *title = "Pong";
+    const char *title = "Game Over";
     Font titleFont = GetFontDefault();
     Vector2 titleDim = MeasureTextEx(titleFont, title, TITLE_FONT_SIZE, TITLE_FONT_SPACING);
 
@@ -39,12 +32,8 @@ void MenuScene::Draw(){
 
     GuiSetStyle(BUTTON, TEXT_ALIGNMENT, TEXT_ALIGN_CENTER);
     GuiSetStyle(DEFAULT, TEXT_SIZE, MENU_FONT_SIZE);
-    if(GuiButton((Rectangle){currX, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Start Game")){
-      startClicked = true;
-    }
-    currY += BUTTON_SPACING;
-    if(GuiButton((Rectangle){currX, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Setting")){
-      settingClicked = true;
+    if(GuiButton((Rectangle){currX, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Restart")){
+      restartClicked = true;
     }
     currY += BUTTON_SPACING;
     if(GuiButton((Rectangle){currX, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Quit")){

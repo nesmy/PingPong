@@ -26,7 +26,7 @@ class Paddle : public BB::Object {
 
   virtual bool update(bool onGround){
     if(mPlayer){
-      MovePad();
+      // MovePad();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width,(float)GetTexture().height})){
 	mBall->drawTrail = true;
 	mBall->mSpeed_x *= -1;
@@ -48,6 +48,16 @@ class Paddle : public BB::Object {
     if(IsKeyDown(KEY_DOWN)){
       Position.y += mSpeed;
     }
+    LimitMovement();
+  }
+
+  virtual void goUp(){
+    Position.y -= mSpeed;
+    LimitMovement();
+  }
+
+  virtual void goDown(){
+    Position.y += mSpeed;
     LimitMovement();
   }
 

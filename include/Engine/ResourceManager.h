@@ -9,7 +9,7 @@ namespace BB {
     //resouce storage
     static std::map<std::string, Texture2D> Textures;
     static std::vector<Object*> Objects;
-    static std::map<int, std::shared_ptr<Scene>> Scenes; 
+    static std::map<std::string, std::shared_ptr<Scene>> Scenes; 
     // loads texture from file
     static Texture2D LoadTexture(const char* file, std::string name);
     // retrieves a stored texture
@@ -20,13 +20,13 @@ namespace BB {
 
     //Load Scene
     template<class T>
-    static std::shared_ptr<Scene> LoadScene(int order){
-      Scenes[order] = std::make_unique<T>();
-      return Scenes[order];
+    static std::shared_ptr<Scene> LoadScene(std::string name){
+      Scenes[name] = std::make_unique<T>();
+      return Scenes[name];
     }
     // Retrieves a stored scene
-    static std::shared_ptr<Scene> GetScene(int order){
-      return Scenes[order];
+    static std::shared_ptr<Scene> GetScene(std::string name){
+      return Scenes[name];
     }
     
     // properly de-allocates all loaded resources

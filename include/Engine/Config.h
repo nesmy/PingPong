@@ -7,7 +7,11 @@
 #include <iostream>
 #include <stdexcept>
 #include <memory>
+#include <cstddef>
 #include <list>
+
+// #define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
 
 #define WIDTH 802
 #define HEIGHT 502

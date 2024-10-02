@@ -10,6 +10,8 @@ namespace BB {
     virtual bool update(bool onGround);
     virtual void Draw();
     virtual Rectangle getBoundingBox();
+    virtual void goUp(){
+    }
     // {
     //   DrawTextureEx(Texture, Position, Rotation, Scale, WHITE);
     // }

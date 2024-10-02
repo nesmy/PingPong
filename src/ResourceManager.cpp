@@ -5,7 +5,7 @@ namespace BB {
   // Instantiate static variables
   std::map<std::string, Texture2D> ResourceManager::Textures;
   std::vector<Object*> ResourceManager::Objects;
-  std::map<int, std::shared_ptr<Scene>> ResourceManager::Scenes;
+  std::map<std::string, std::shared_ptr<Scene>> ResourceManager::Scenes;
 
   Texture2D ResourceManager::LoadTexture(const char *file, std::string name){
     if(Textures[name].id <= 0){

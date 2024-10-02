@@ -1,16 +1,10 @@
-#include "Setting.h"
+#include "MainSetting.h"
 
-//#define RAYGUI_IMPLEMENTATION
 #include "ResourceManager.h"
 
-std::shared_ptr<BB::Scene> SettingScene::update(){
-    if(startClicked){
-      startClicked = false;
-      return BB::ResourceManager::GetScene("Game");
-    }else if (restartClicked){
-      restartClicked = false;
-      BB::ResourceManager::GetScene("Game")->freeResources();
-      BB::ResourceManager::GetScene("Game")->loadResources();
+std::shared_ptr<BB::Scene> MainSettingScene::update(){
+    if(returnClicked){
+      returnClicked = false;
       return BB::ResourceManager::GetScene("Main");
     }
     else {
@@ -18,13 +12,13 @@ std::shared_ptr<BB::Scene> SettingScene::update(){
     }
 }
 
-void SettingScene::Draw(){
+void MainSettingScene::Draw(){
     BB::Scene::Draw();
 
     int sceneWidth = GetScreenWidth();
     int sceneHeight = GetScreenHeight();
 
-    const char *title = "Settings";
+    const char *title = "Main Settings";
     Font titleFont = GetFontDefault();
     Vector2 titleDim = MeasureTextEx(titleFont, title, TITLE_FONT_SIZE, TITLE_FONT_SPACING);
 
@@ -40,17 +34,13 @@ void SettingScene::Draw(){
 
     GuiSetStyle(BUTTON, TEXT_ALIGNMENT, TEXT_ALIGN_CENTER);
     GuiSetStyle(DEFAULT, TEXT_SIZE, MENU_FONT_SIZE);
-    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Resume")){
-       startClicked = true;
+    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Return")){
+       returnClicked = true;
     }
     currY += BUTTON_SPACING;
     if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Restart")){
       // quit = true;
-       restartClicked = true;
+       // restartClicked = true;
     }
-    currY += BUTTON_SPACING;
-    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Quit")){
-      quit = true;
-      //exit = true;
-    }
+    
   }
