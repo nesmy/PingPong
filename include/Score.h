@@ -1,20 +1,37 @@
-#include "raylib.h"
-class Score {
-public:
-  Score(Texture2D texture) : _Texture(texture) {
-    _Src = (Rectangle){0, 0, (float)_Texture.width, (float)_Texture.height};
+#pragma once
+#include "Engine/Object.h"
+#include "ResourceManager.h"
+
+
+class Score : public BB::Object {
+ public:
+  Score(float x, float y, bool flip, int& score)
+    :mScore(score){
+    Flip = flip;
+    Texture = BB::ResourceManager::LoadTexture("Resources/arts/ScoreBar.png", "ScoreBar");
+    Position = Vector2{x,y};
+    Scale = 1.0f;
+    Rotation = 0.0f;
   }
-  ~Score() {}
+  virtual ~Score() {}
 
-  void Draw() { DrawTextureRec(_Texture, _Src, _Position, WHITE); }
+  void Draw(){
+    Rectangle source = {0,0, -(float)Texture.width, (float)Texture.height };
+    if(Flip == false){
+      DrawTextureEx(Texture, Position, Rotation, Scale, WHITE);
+      DrawText(TextFormat("%i", mScore), 270, 10, 30, MAROON);
+    }else {
+      DrawTextureRec(Texture, source, Position, WHITE);
+      DrawText(TextFormat("%i", mScore), 500, 10, 30, MAROON);
+    }
+  }
 
-  Vector2 &GetPosition() { return _Position; }
-  Rectangle &GetDest() { return _Dest; }
-  Rectangle &GetSrc() { return _Src; }
+  virtual bool update(bool onGround){
+    
+    return true;
+  }
 
-private:
-  Texture2D _Texture;
-  Vector2 _Position;
-  Rectangle _Dest;
-  Rectangle _Src;
+ private:
+  bool Flip;
+  int &mScore;
 };

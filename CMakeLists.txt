@@ -1,27 +1,60 @@
-cmake_minimum_required(VERSION 3.5)
-set(CMAKE_CXX_STANDARD 14)
-
-project(PingPong)
-
+cmake_minimum_required(VERSION 3.30)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-file(GLOB SOURCES src/*.cpp )
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_PDB_OUTPUT_DIRECTORY $<0:>${CMAKE_BINARY_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH $<0:>${CMAKE_BINARY_DIR}/bin)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+set(CMAKE_CONFIGURATION_TYPES Debug Release)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
+set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(vendor/raylib)
+project(Pong)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD 
-  COMMAND "${CMAKE_COMMAND}" -E copy_directory 
-	"${CMAKE_CURRENT_SOURCE_DIR}/assets"
-     "${CMAKE_CURRENT_SOURCE_DIR}/build/assets" 
-  COMMENT "Copying to output directory")
+# gather all source files
+file(GLOB_RECURSE sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE headers ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 
-target_include_directories(${PROJECT_NAME}
-  PUBLIC include
-  PUBLIC vendor/raylib/src
-  )
+add_executable(${PROJECT_NAME} ${sources} ${headers})
 
-target_link_libraries(${PROJECT_NAME}
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm)
+
+# export engine symbols
+target_compile_definitions(${PROJECT_NAME} PUBLIC
+)
+
+# includes directories
+target_include_directories(${PROJECT_NAME} PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/Engine
+  ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm
+  ${CMAKE_CURRENT_SOURCE_DIR}/vendor/raygui/src
+)
+
+# link directories
+target_link_directories(${PROJECT_NAME} PUBLIC
+)
+
+# link libraries
+target_link_libraries(${PROJECT_NAME} PUBLIC
+  #glfw
+  #glm
   raylib
-  )
+)
+
+# copy resources
+if(EXISTS ${CMAKE_SOURCE_DIR}/Resources)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND
+        ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/Resources
+        ${EXECUTABLE_OUTPUT_PATH}/Resources
+    )
+else()
+    message(WARNING "[WARNING] no resource directory!")
+endif()

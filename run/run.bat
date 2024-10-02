@@ -1,2 +1,0 @@
-cd ../Build
-PingPong.exe

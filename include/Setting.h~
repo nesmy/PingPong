@@ -1,0 +1,38 @@
+#pragma once
+
+#include "Scene.h"
+#include "Pong.h"
+
+class SettingScene : public BB::Scene {
+ public:
+  SettingScene(){
+    startClicked = false;
+    settingClicked = false;
+    quit = false;
+  }
+  virtual ~SettingScene(){
+  }
+  
+  virtual std::shared_ptr<BB::Scene> update(){
+    if(startClicked){
+     
+      return Game;
+    }
+    else {
+      return nullptr;
+    }
+  }
+  virtual bool shouldQuit(){
+    return quit;
+  }
+  virtual void Draw();
+  
+  virtual void doExit() {
+    quit = true;
+  }
+
+ private:
+  bool startClicked;
+  bool settingClicked;
+  bool quit;
+};

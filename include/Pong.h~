@@ -1,0 +1,27 @@
+#pragma once
+#include "Background.h"
+#include "Ball.h"
+#include "Engine/Application.h"
+#include "Paddle.h"
+#include "Score.h"
+
+class Pong : public BB::Application {
+ public:
+  Pong(){
+  }
+  ~Pong(){
+  }
+  
+  void SetUp();
+  void Update();
+  void Ui();
+   
+ private:
+  Paddle* player;
+  Paddle* computer;
+  Ball* ball;
+  BG* bG;
+  Score* score;
+  Score* score2;
+  int player_score, cpu_score;
+};

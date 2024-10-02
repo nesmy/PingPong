@@ -1,0 +1,41 @@
+#include "Pong.h"
+#include "ResourceManager.h"
+
+using namespace BB;
+
+void Pong::SetUp(){
+
+  bG = new BG(0,47);
+  score = new Score(0,0, false);
+  score2 = new Score((float)GetScreenWidth() - ResourceManager::GetTexture("ScoreBar").width, 0, true);
+  computer = new Paddle( 15, (float)GetScreenHeight() / 2, false);
+  player = new Paddle((float)GetScreenWidth() - computer->GetTexture().width - 15  , (float)GetScreenHeight() / 2 - (float)computer->GetTexture().height / 2,true);
+  ball = new Ball((float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2);
+  cpu_score = 0;
+  player_score = 0;
+}
+
+void Pong::Ui(){
+  DrawText("TIME", GetScreenWidth() / 2 - 30, 10, 20, WHITE);
+  DrawText("1:60", GetScreenWidth() / 2 - 30, 30, 20, WHITE);
+  DrawText(TextFormat("%i", cpu_score), 270, 10, 30, MAROON);
+  DrawText(TextFormat("%i", player_score), 500, 10, 30, MAROON);
+}
+
+void Pong::Update(){
+  Pong::Ui();
+
+   ball->MoveBall(player_score, cpu_score);
+  player->MovePad();
+  computer->MoveCPU(ball->GetPosition().y);
+
+  //check collision
+  if(CheckCollisionCircleRec(ball->GetPosition(), ball->mRadius, Rectangle{player->GetPosition().x, player->GetPosition().y, (float)player->GetTexture().width,(float)player->GetTexture().height})){
+    ball->drawTrail = true;
+    ball->mSpeed_x *= -1;
+    }
+  if(CheckCollisionCircleRec(ball->GetPosition(), ball->mRadius, Rectangle{computer->GetPosition().x, computer->GetPosition().y, (float)computer->GetTexture().width, (float)computer->GetTexture().height})){
+    ball->drawTrail = true;
+    ball->mSpeed_x *= -1;
+  }
+}
