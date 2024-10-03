@@ -13,6 +13,7 @@ class Paddle : public BB::Object {
     }else {
       Texture = BB::ResourceManager::LoadTexture("Resources/arts/Computer.png", "Computer");
     }
+    BB::ResourceManager::AddObject(this);
     Position = Vector2{x, y};
     Scale = 1.0f;
     Rotation = 0.0f;

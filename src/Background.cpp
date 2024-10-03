@@ -3,6 +3,7 @@
 BG::BG(BB::Timer *time)
   :mTime(time)    {
   Texture = BB::ResourceManager::LoadTexture("Resources/arts/Board.png","Board");
+  BB::ResourceManager::AddObject(this);
   Position = Vector2{0, 47};
   Scale = 1.0f;
   Rotation = 0.0f;

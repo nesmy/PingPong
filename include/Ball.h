@@ -7,8 +7,9 @@ class Ball : public BB::Object {
  public:
   Ball(float x, float y, int &player, int &cpu)
     : player_score(player), cpu_score(cpu){
-    Texture = BB::ResourceManager::LoadTexture("Resources/arts/Ball.png", "Ball");
     Trail = BB::ResourceManager::LoadTexture("Resources/arts/BallMotion.png","Trail");
+    Texture = BB::ResourceManager::LoadTexture("Resources/arts/Ball.png", "Ball");
+    BB::ResourceManager::AddObject(this);
     Position = Vector2{x,y};
     Scale = 1.0f;
     Rotation = 0.0f;
@@ -46,11 +47,13 @@ class Ball : public BB::Object {
   virtual void Draw(){
     DrawCircle(Position.x, Position.y, mRadius, RED);
     Vector2 temp = Vector2{Position.x - Texture.width / 2, Position.y - Texture.height /2};
-    DrawTextureEx(Texture, temp, Rotation, Scale, WHITE);
+    Rectangle source = {0,0, -(float)Trail.width, (float)Trail.height };
     // if(drawTrail){
     // traiRot = 90.0f;
-      DrawTextureEx(Trail, Position, traiRot, Scale, WHITE);
+    // // DrawTextureEx(Trail, Position, traiRot, Scale, WHITE);
+      DrawTextureRec(Trail, source, Position, WHITE);
     // }
+    DrawTextureEx(Texture, temp, Rotation, Scale, WHITE);
   }
 
   void Reset(){

@@ -69,6 +69,9 @@ namespace BB {
   void Scene::Draw(){
     
     ClearBackground(BLACK);
+    // for(auto &object : BB::ResourceManager::GetObjects()){
+    //   object->Draw();
+    // }
     if(Objects.size()){
       for(auto &object : Objects){
 	object->Draw();
