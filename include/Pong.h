@@ -27,5 +27,4 @@ class Pong : public BB::Scene {
   int player_score, cpu_score;
   BB::Timer time = {10};
   std::shared_ptr<Paddle> Computer;
-  Sound Music;
 };

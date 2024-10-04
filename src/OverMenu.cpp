@@ -1,6 +1,11 @@
 #include "OverMenu.h"
 #include "ResourceManager.h"
 
+OverMenuScene::OverMenuScene(){
+    restartClicked = false;
+    quit = false;
+  }
+
 std::shared_ptr<BB::Scene> OverMenuScene::update(){
     if(restartClicked){
       restartClicked =false;
@@ -14,8 +19,7 @@ std::shared_ptr<BB::Scene> OverMenuScene::update(){
 
 void OverMenuScene::Draw(){
     BB::Scene::Draw();
-    PlaySound(sound);
-
+    
     int sceneWidth = GetScreenWidth();
     int sceneHeight = GetScreenHeight();
 

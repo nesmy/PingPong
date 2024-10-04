@@ -12,7 +12,6 @@ class Paddle : public BB::Object {
       Texture = BB::ResourceManager::LoadTexture("Resources/arts/Player.png", "Player");
     }else {
       Texture = BB::ResourceManager::LoadTexture("Resources/arts/Computer.png", "Computer");
-      hit = LoadSound("Resources/Sound/hit.mp3");
     }
     BB::ResourceManager::AddObject(this);
     Position = Vector2{x, y};
@@ -32,14 +31,14 @@ class Paddle : public BB::Object {
       // MovePad();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width,(float)GetTexture().height})){
 	mBall->drawTrail = true;
-	PlaySound(hit);
+	PlaySound(BB::ResourceManager::GetSound("Hit"));
 	mBall->mSpeed_x *= -1;
     }
     }else {
       MoveCPU();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width, (float)GetTexture().height})){
 	mBall->drawTrail = true;
-	PlaySound(hit);
+	PlaySound(BB::ResourceManager::GetSound("Hit"));
 	mBall->mSpeed_x *= -1;
   }
     }
@@ -91,5 +90,4 @@ private:
   bool mPlayer;
 public:
   int mSpeed, mCpuSpeed;
-  Sound hit;
 };

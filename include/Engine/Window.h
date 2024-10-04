@@ -10,6 +10,7 @@ class Window {
     SetExitKey(KEY_NULL);
   }
   ~Window(){
+    CloseAudioDevice();
     CloseWindow();
   }
  private:

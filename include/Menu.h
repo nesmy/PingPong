@@ -7,11 +7,7 @@
 
 class MenuScene : public BB::Scene {
  public:
-  MenuScene(){
-    startClicked = false;
-    settingClicked = false;
-    quit = false;
-  }
+  MenuScene();
   virtual ~MenuScene(){
   }
   

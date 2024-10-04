@@ -4,19 +4,27 @@
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
+MenuScene::MenuScene()
+{
+  startClicked = false;
+  settingClicked = false;
+  quit = false;
+}    
 std::shared_ptr<BB::Scene> MenuScene::update(){
-    if(startClicked){
-      startClicked =false;
-      BB::ResourceManager::GetScene("Game")->start();
-      return BB::ResourceManager::GetScene("Game");
-    }else if(settingClicked){
-      settingClicked = false;
-      return BB::ResourceManager::GetScene("MainSetting");
-    }
-    else {
-      return nullptr;
-    }
+
+  if(startClicked){
+    startClicked =false;
+    StopSound(BB::ResourceManager::GetSound("Music"));
+    BB::ResourceManager::GetScene("Game")->start();
+    return BB::ResourceManager::GetScene("Game");
+  }else if(settingClicked){
+    settingClicked = false;
+    return BB::ResourceManager::GetScene("MainSetting");
   }
+  else {
+    return nullptr;
+  }
+}
 
 void MenuScene::Draw(){
     BB::Scene::Draw();

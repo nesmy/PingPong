@@ -12,13 +12,19 @@ int main(void){
   int retVal = EXIT_SUCCESS;
   Application<MenuScene> App;
   
+  ResourceManager::LoadScene<MenuScene>("Main");
   ResourceManager::LoadScene<Pong>("Game");
   ResourceManager::GetScene("Game")->loadResources();
-  ResourceManager::LoadScene<MenuScene>("Main");
   ResourceManager::LoadScene<SettingScene>("Setting");
   ResourceManager::LoadScene<MainSettingScene>("MainSetting");
-  ResourceManager::LoadScene<OverMenuScene>("Over");  
+  ResourceManager::LoadScene<OverMenuScene>("Over");
+  ResourceManager::LoadSound("Resources/Sound/over.mp3", "Over");
+  ResourceManager::LoadSound("Resources/Sound/hit.mp3", "Hit");
+  ResourceManager::LoadSound("Resources/Sound/music.mp3", "Music");
+  ResourceManager::LoadSound("Resources/Sound/coin.mp3", "Coin");
 
+  PlaySound(BB::ResourceManager::GetSound("Music"));
+  
   try{
     App.RunLoop();
   }
@@ -26,6 +32,8 @@ int main(void){
     showErrorAndExit(e.what());
     retVal = EXIT_FAILURE;
   }
+
+  ResourceManager::Clear();
   
   return retVal;
 }

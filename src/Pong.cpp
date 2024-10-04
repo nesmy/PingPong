@@ -9,7 +9,6 @@ Pong::~Pong() {}
 
 void Pong::loadResources(){
   start();
-  Music = LoadSound("Resources/Sound/music.mp3");
   std::shared_ptr<BG> Background = std::make_shared<BG>(&time);
   std::shared_ptr<Score> Score1 = std::make_shared<Score>(0,0, false, cpu_score);
   std::shared_ptr<Score> Score2 = std::make_shared<Score>((float)GetScreenWidth() - ResourceManager::GetTexture("ScoreBar").width, 0, true, player_score);
@@ -30,8 +29,6 @@ void Pong::loadResources(){
 std::shared_ptr<BB::Scene> Pong::update(){
     BB::Scene::update();
 
-    PlaySound(Music);
-
   if(easy){
     Computer->mCpuSpeed = 3;
   }else if (medium) {
@@ -43,12 +40,14 @@ std::shared_ptr<BB::Scene> Pong::update(){
     if(cpu_score == 7 || player_score == 7){
       cpu_score = 0;
       player_score = 0;
+      PlaySound(BB::ResourceManager::GetSound("Over"));
       BB::ResourceManager::GetScene("Game")->loadResources();
       return BB::ResourceManager::GetScene("Over");
     }
     else if(TimerDone(&time)){
       cpu_score = 0;
       player_score = 0;
+      PlaySound(BB::ResourceManager::GetSound("Over"));
       BB::ResourceManager::GetScene("Game")->loadResources();      
       return BB::ResourceManager::GetScene("Over");
     }
