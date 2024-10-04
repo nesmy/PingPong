@@ -19,10 +19,10 @@ class Score : public BB::Object {
     Rectangle source = {0,0, -(float)Texture.width, (float)Texture.height };
     if(Flip == false){
       DrawTextureEx(Texture, Position, Rotation, Scale, WHITE);
-      DrawText(TextFormat("%i", mScore), 270, 10, 30, MAROON);
+      DrawText(TextFormat("%i", mScore), 250, 10, 30, BLACK);
     }else {
       DrawTextureRec(Texture, source, Position, WHITE);
-      DrawText(TextFormat("%i", mScore), 500, 10, 30, MAROON);
+      DrawText(TextFormat("%i", mScore), 540, 10, 30, BLACK);
     }
   }
 

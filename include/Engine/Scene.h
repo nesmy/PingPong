@@ -87,5 +87,9 @@ namespace BB {
 
     bool exit;
 
+    // TO CHANGE
+  public:
+    bool easy, medium, hard;
+
   };
 }

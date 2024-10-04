@@ -34,13 +34,36 @@ void MainSettingScene::Draw(){
 
     GuiSetStyle(BUTTON, TEXT_ALIGNMENT, TEXT_ALIGN_CENTER);
     GuiSetStyle(DEFAULT, TEXT_SIZE, MENU_FONT_SIZE);
-    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Return")){
+    if(GuiButton((Rectangle){0, titleDim.y - 10, BUTTON_WIDTH, BUTTON_HEIGHT}, "Return")){
        returnClicked = true;
     }
-    currY += BUTTON_SPACING;
-    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Restart")){
+    
+    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Easy")){
       // quit = true;
        // restartClicked = true;
+      // TO CHANGE
+      BB::ResourceManager::GetScene("Game")->easy = true;
+      BB::ResourceManager::GetScene("Game")->medium = false;
+      BB::ResourceManager::GetScene("Game")->hard = false;
+      returnClicked = true;
+    }
+    currY += BUTTON_SPACING;
+    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Medium")){
+      // quit = true;
+       // restartClicked = true;
+      BB::ResourceManager::GetScene("Game")->easy = false;
+      BB::ResourceManager::GetScene("Game")->medium = true;
+      BB::ResourceManager::GetScene("Game")->hard = false;
+      returnClicked = true;
+    }
+    currY += BUTTON_SPACING;
+    if(GuiButton((Rectangle){0, currY, BUTTON_WIDTH, BUTTON_HEIGHT}, "Hard")){
+      // quit = true;
+       // restartClicked = true;
+      BB::ResourceManager::GetScene("Game")->easy = false;
+      BB::ResourceManager::GetScene("Game")->medium = false;
+      BB::ResourceManager::GetScene("Game")->hard = true;
+      returnClicked = true;
     }
     
   }

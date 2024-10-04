@@ -12,12 +12,14 @@ class Paddle : public BB::Object {
       Texture = BB::ResourceManager::LoadTexture("Resources/arts/Player.png", "Player");
     }else {
       Texture = BB::ResourceManager::LoadTexture("Resources/arts/Computer.png", "Computer");
+      hit = LoadSound("Resources/Sound/hit.mp3");
     }
     BB::ResourceManager::AddObject(this);
     Position = Vector2{x, y};
     Scale = 1.0f;
     Rotation = 0.0f;
     mSpeed = 6;
+    mCpuSpeed = 4;
   }
   virtual ~Paddle() {}
 
@@ -30,12 +32,14 @@ class Paddle : public BB::Object {
       // MovePad();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width,(float)GetTexture().height})){
 	mBall->drawTrail = true;
+	PlaySound(hit);
 	mBall->mSpeed_x *= -1;
     }
     }else {
       MoveCPU();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width, (float)GetTexture().height})){
 	mBall->drawTrail = true;
+	PlaySound(hit);
 	mBall->mSpeed_x *= -1;
   }
     }
@@ -64,10 +68,10 @@ class Paddle : public BB::Object {
 
   void MoveCPU(){
     if(Position.y + Texture.height / 2 > mBall->GetPosition().y){
-      Position.y -= mSpeed;
+      Position.y -= mCpuSpeed;
     }
     if(Position.y + Texture.height / 2 <= mBall->GetPosition().y){
-      Position.y += mSpeed;
+      Position.y += mCpuSpeed;
     }
 
     LimitMovement();
@@ -86,5 +90,6 @@ private:
   std::shared_ptr<Ball> mBall;
   bool mPlayer;
 public:
-  int mSpeed;
+  int mSpeed, mCpuSpeed;
+  Sound hit;
 };

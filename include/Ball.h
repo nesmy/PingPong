@@ -13,6 +13,7 @@ class Ball : public BB::Object {
     Position = Vector2{x,y};
     Scale = 1.0f;
     Rotation = 0.0f;
+    traiRot = 90.0f;
     mRadius = 15.0f;
     mSpeed_x = 7;
     mSpeed_y = 7;
@@ -48,10 +49,13 @@ class Ball : public BB::Object {
     DrawCircle(Position.x, Position.y, mRadius, RED);
     Vector2 temp = Vector2{Position.x - Texture.width / 2, Position.y - Texture.height /2};
     Rectangle source = {0,0, -(float)Trail.width, (float)Trail.height };
+    Rectangle dest = {Position.x,Position.y,(float)Trail.width,(float)Trail.height};
+    Vector2 origin = {0,0};
     // if(drawTrail){
     // traiRot = 90.0f;
     // // DrawTextureEx(Trail, Position, traiRot, Scale, WHITE);
-      DrawTextureRec(Trail, source, Position, WHITE);
+      // DrawTextureRec(Trail, source, Position, WHITE);
+      // DrawTexturePro(Trail, source, dest, origin, traiRot, WHITE);
     // }
     DrawTextureEx(Texture, temp, Rotation, Scale, WHITE);
   }

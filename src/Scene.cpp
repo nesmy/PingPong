@@ -54,8 +54,6 @@ namespace BB {
     if(exit){
       exit = false;
       return std::make_unique<MenuScene>();
-    }else if(IsKeyDown(KEY_ESCAPE)){
-      return ResourceManager::GetScene("Setting");
     }
     else {
       return nullptr;

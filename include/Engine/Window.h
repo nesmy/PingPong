@@ -5,6 +5,7 @@ class Window {
  public:
   Window(int width, int height, const char* title){
     InitWindow(width, height, title);
+    InitAudioDevice();
     SetTargetFPS(60);
     SetExitKey(KEY_NULL);
   }

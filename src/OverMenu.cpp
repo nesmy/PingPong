@@ -4,6 +4,8 @@
 std::shared_ptr<BB::Scene> OverMenuScene::update(){
     if(restartClicked){
       restartClicked =false;
+      BB::ResourceManager::GetScene("Game")->freeResources();
+      BB::ResourceManager::GetScene("Game")->loadResources();      
       return BB::ResourceManager::GetScene("Main");
     }else {
       return nullptr;
@@ -12,6 +14,7 @@ std::shared_ptr<BB::Scene> OverMenuScene::update(){
 
 void OverMenuScene::Draw(){
     BB::Scene::Draw();
+    PlaySound(sound);
 
     int sceneWidth = GetScreenWidth();
     int sceneHeight = GetScreenHeight();

@@ -9,6 +9,7 @@ class OverMenuScene : public BB::Scene {
   OverMenuScene(){
     restartClicked = false;
     quit = false;
+    sound = LoadSound("Resouces/Sound/over.mp3");
   }
   virtual ~OverMenuScene(){
   }
@@ -26,4 +27,5 @@ class OverMenuScene : public BB::Scene {
  private:
   bool restartClicked;
   bool quit;
+  Sound sound;
 };

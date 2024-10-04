@@ -12,6 +12,10 @@ class Pong : public BB::Scene {
   
   virtual void loadResources();
   virtual std::shared_ptr<BB::Scene> update();
+  virtual void start(){
+    cpu_score = 0;
+    player_score = 0;
+  }
    
  private:
   // Paddle* player;
@@ -22,4 +26,6 @@ class Pong : public BB::Scene {
   // Score* score2;
   int player_score, cpu_score;
   BB::Timer time = {10};
+  std::shared_ptr<Paddle> Computer;
+  Sound Music;
 };

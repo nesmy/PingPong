@@ -7,7 +7,7 @@ BG::BG(BB::Timer *time)
   Position = Vector2{0, 47};
   Scale = 1.0f;
   Rotation = 0.0f;
-  BB::StartTimer(mTime, 300.0f);
+  BB::StartTimer(mTime, 120.0f);
 }
 
 BG::~BG() {}
@@ -18,7 +18,7 @@ bool BG::update(bool onGround) {
 }
 
 void BG::Draw(){
-  DrawText("TIME", GetScreenWidth() / 2 - 30, 10, 20, WHITE);
+  DrawText("TIME", GetScreenWidth() / 2 - MeasureText("TIME", 20) / 2, 5, 20, VIOLET);
   DrawText(TextFormat("%01i:%01i", (int)mTime->Lifetime / 60,
 		      (int)mTime->Lifetime % 60),
 	   GetScreenWidth() / 2 -
@@ -27,7 +27,7 @@ void BG::Draw(){
 		       20) /
 	   2,
 
-	   30, 20, LIGHTGRAY);
+	   25, 20, WHITE);
   Rectangle source = {0,0, (float)GetScreenWidth(), (float)GetScreenHeight()};
   
   // DrawTextureEx(test, Vector2{0,0}, Rotation, Scale, WHITE);
