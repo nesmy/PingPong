@@ -10,6 +10,7 @@ std::shared_ptr<BB::Scene> SettingScene::update(){
     }else if (restartClicked){
       restartClicked = false;
       BB::ResourceManager::GetScene("Game")->freeResources();
+      BB::ResourceManager::GetScene("Game")->start();
       BB::ResourceManager::GetScene("Game")->loadResources();
       return BB::ResourceManager::GetScene("Main");
     }

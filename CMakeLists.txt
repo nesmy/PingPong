@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD 17)
 
+
 project(Pong)
 
 # gather all source files
@@ -58,3 +59,9 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/Resources)
 else()
     message(WARNING "[WARNING] no resource directory!")
 endif()
+  
+if (EMSCRIPTEN)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY -s GL_ENABLE_GET_PROC_ADDRESS=1 --preload-file Resources/ -s EXPORTED_RUNTIME_METHODS=ccall" )
+    set(CMAKE_EXECUTABLE_SUFFIX ".html") # This line is used to set your executable to build with the emscripten html template so that you can directly open it.
+    message(WARNING "EMSRIPTEN FOUND ANS WEB BUILDING")
+endif ()

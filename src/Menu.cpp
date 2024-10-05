@@ -14,7 +14,7 @@ std::shared_ptr<BB::Scene> MenuScene::update(){
 
   if(startClicked){
     startClicked =false;
-    StopSound(BB::ResourceManager::GetSound("Music"));
+    // StopSound(BB::ResourceManager::GetSound("Music"));
     BB::ResourceManager::GetScene("Game")->start();
     return BB::ResourceManager::GetScene("Game");
   }else if(settingClicked){

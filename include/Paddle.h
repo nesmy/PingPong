@@ -31,14 +31,14 @@ class Paddle : public BB::Object {
       // MovePad();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width,(float)GetTexture().height})){
 	mBall->drawTrail = true;
-	PlaySound(BB::ResourceManager::GetSound("Hit"));
+	// PlaySound(BB::ResourceManager::GetSound("Hit"));
 	mBall->mSpeed_x *= -1;
     }
     }else {
       MoveCPU();
       if(CheckCollisionCircleRec(mBall->GetPosition(), mBall->mRadius, Rectangle{GetPosition().x, GetPosition().y, (float)GetTexture().width, (float)GetTexture().height})){
 	mBall->drawTrail = true;
-	PlaySound(BB::ResourceManager::GetSound("Hit"));
+	// PlaySound(BB::ResourceManager::GetSound("Hit"));
 	mBall->mSpeed_x *= -1;
   }
     }

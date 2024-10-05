@@ -4,6 +4,7 @@
 OverMenuScene::OverMenuScene(){
     restartClicked = false;
     quit = false;
+    // Over = LoadSound("Resources/Sound/over.mp3");
   }
 
 std::shared_ptr<BB::Scene> OverMenuScene::update(){
@@ -19,7 +20,7 @@ std::shared_ptr<BB::Scene> OverMenuScene::update(){
 
 void OverMenuScene::Draw(){
     BB::Scene::Draw();
-    
+    // PlaySound(Over);
     int sceneWidth = GetScreenWidth();
     int sceneHeight = GetScreenHeight();
 

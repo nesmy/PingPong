@@ -37,12 +37,12 @@ class Ball : public BB::Object {
     }
     if (Position.x + mRadius >= GetScreenWidth()){
       cpu_score++;
-      PlaySound(BB::ResourceManager::GetSound("Coin"));
+      // PlaySound(BB::ResourceManager::GetSound("Coin"));
       Reset();
     }
     if(Position.x - mRadius <= 0){
       player_score++;
-      PlaySound(BB::ResourceManager::GetSound("Coin"));      
+      // PlaySound(BB::ResourceManager::GetSound("Coin"));      
       Reset();
     }
   }

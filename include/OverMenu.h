@@ -23,4 +23,5 @@ class OverMenuScene : public BB::Scene {
  private:
   bool restartClicked;
   bool quit;
+  Sound Over;
 };

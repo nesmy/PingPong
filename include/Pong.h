@@ -13,8 +13,7 @@ class Pong : public BB::Scene {
   virtual void loadResources();
   virtual std::shared_ptr<BB::Scene> update();
   virtual void start(){
-    cpu_score = 0;
-    player_score = 0;
+    
   }
    
  private:
